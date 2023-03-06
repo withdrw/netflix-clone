@@ -7,6 +7,7 @@ import { Element,Genre } from "../typings"
 import { Movie } from "../typings"
 import ReactPlayer from "react-player/lazy"
 import { FaPlay } from "react-icons/fa"
+import { DocumentData } from "firebase/firestore"
 
 
 
@@ -64,17 +65,17 @@ function Modal() {
     <button className="modalButton absolute right-5 top-5 !z-40 border-none bg-[#181818] hover:bg-[#181818] " onClick={handleClose}>
         <XIcon className="h-6 w-6"></XIcon>
     </button>
-    <div>
 
+    <div className="relative pt-[56.25%]">
     <ReactPlayer
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
             style={{ position: 'absolute', top: '0', left: '0' }}
             playing
-          />
-            <div className="absolute bottom-10 flex w-full items-center justify-between"> 
-          <div>
+            />
+            <div className="absolute bottom-10 flex w-full items-center justify-between px-10"> 
+          <div className="flex space-x-2">
                 <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6] ">
 
                 <FaPlay className="h-7 w-7 text-black" />
@@ -87,6 +88,8 @@ function Modal() {
                 </button>
             </div>
           </div>
+          </div>
+
     <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
 <div className="space-y-6 text-lg "> 
     <div className="flex items-center space-x-2 text-sm">
@@ -98,6 +101,8 @@ function Modal() {
     </div>
     <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
         <p className="w-5/6 ">{movie?.overview}</p>
+        <div className="flex flex-col space-y-3 text-sm">
+
         <div>
             <span>Genres:</span>
             {genres.map((genre)=> genre.name).join(', ')}
@@ -109,9 +114,9 @@ function Modal() {
         <span className="text-[gray]">Total Votes: </span>
             {movie?.vote_count}
         </div>
+        </div>
     </div>
 </div>
-    </div>
     </div>
 
     </>
