@@ -5,11 +5,10 @@ import {useRef,useState} from "react"
 import { DocumentData } from "firebase/firestore";
 
 
-    interface Props {
-        title: string;
-        movies: Movie[]
-            movie: Movie | DocumentData[]
-    }
+interface Props {
+    title: string;
+    movies: Movie | DocumentData[]
+}
 
 
 function Row({ title , movies }:Props ) {
