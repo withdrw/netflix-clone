@@ -1,17 +1,12 @@
-import Image from 'next/image'
-import { Movie } from '../typings'
-import { useRecoilState} from 'recoil'
-import { modalState, movieState } from '../atoms/modalAtom'
 import { DocumentData } from 'firebase/firestore'
+import Image from 'next/image'
+import { useRecoilState } from 'recoil'
+import { modalState, movieState } from '../atoms/modalAtom'
+import { Movie } from '../typings'
 
-interface Props{
-    movie: Movie | DocumentData
-    movies: Movie
+interface Props {
+  movie: Movie | DocumentData
 }
-
-
-
-
 
 function Thumbnail({ movie }: Props) {
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState)
@@ -25,9 +20,9 @@ function Thumbnail({ movie }: Props) {
         setShowModal(true)
       }}
     >
-      <Image alt=''
+      <Image alt='/'
         src={`https://image.tmdb.org/t/p/w500${
-          movie.backdrop_path || movie?.poster_path
+          movie.backdrop_path || movie.poster_path
         }`}
         className="rounded-sm object-cover md:rounded"
         layout="fill"
